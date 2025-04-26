@@ -1,0 +1,118 @@
+.login {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #eaedf7;
+    display: flex;
+    grid-template-columns: 1fr 1fr; /* Splitting the layout into two equal parts */
+    align-items: center;
+    justify-content: center;
+}
+
+.login-left-container {
+    height: 465px;
+    place-self: center;
+    width: max(23vw, 330px);
+    color: white;
+    background-color: #383d7c;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 2s;
+    text-align: center;
+}
+
+.left-title img {
+    height: 220px;
+}
+
+.left-title h2{
+    color: white;
+}
+
+.login-right-container {
+    height: 465px;
+    place-self: center;
+    width: max(23vw, 350px);
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 2s;
+}
+
+.login-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #383d7c;
+}
+
+.login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-inputs input {
+    outline: none;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.login-right-container button {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: #383d7c;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.login span {
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-right-container .link {
+    color: black;
+}
+
+.left-title h1{
+    color: white;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .login-left-container, .login-right-container {
+        width: 80%;
+    }
+}

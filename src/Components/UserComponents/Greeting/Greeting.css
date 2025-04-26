@@ -1,0 +1,76 @@
+.greeting-container {
+  color: white;
+  text-align: center;
+  padding: 50px; /* Adjust padding as needed */
+  position: relative; /* For positioning decorative elements */
+  height: 400px;
+}
+
+.content {
+  position: relative; /*To position the text above the image */
+  z-index: 2; /* Ensure content is above decorative elements*/
+  padding-top: 17%;
+  margin-right: 50%; /* Shift content to the right */
+  margin-top: -5%;
+  animation: fadeIn 3s;
+}
+
+.decorative-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust as needed */
+  z-index: 1; /* Place behind the content */
+}
+
+.decorative-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100px; /* Adjust as needed */
+  z-index: 1; /* Place behind the content */
+}
+
+.image-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3; /* Adjust the opacity of the image */
+  z-index: 0;
+  background-size: contain; /* Adjust the background size to cover, contain, or auto */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.content h1 {
+  font-weight: 500;
+  color: black;
+  font-size: max(4.5vw, 22px);
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1.2em; /* Adjust as needed */
+  margin-bottom: 30px;
+  color: black;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 50px; /* Rounded corners */
+}

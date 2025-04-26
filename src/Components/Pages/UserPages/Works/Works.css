@@ -1,0 +1,30 @@
+.order-step-container {
+    text-align: center;
+    padding: 50px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .order-step-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .order-step-image img {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .order-step-description {
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .order-step-container h2 {
+    color: #E0C87C; /* Dark green */
+    margin-bottom: 20px;
+    text-decoration: underline;
+  }
+  

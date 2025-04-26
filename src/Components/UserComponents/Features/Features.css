@@ -1,0 +1,26 @@
+.features-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.feature-item {
+  margin: 10px; /* Adjust margin as needed */
+  width: calc(25% - 20px); /* Adjust width as needed */
+  text-align: center;
+}
+
+.feature-icon {
+  width: 135px; /* Adjust width as needed */
+  height: 135px; /* Adjust height as needed */
+  margin-bottom: 10px;
+}
+
+.feature-title {
+  font-size: 16px; /* Adjust font size as needed */
+  margin-bottom: 5px;
+}
+
+.feature-description {
+  font-size: 14px; /* Adjust font size as needed */
+}

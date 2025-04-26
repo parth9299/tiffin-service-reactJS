@@ -1,0 +1,80 @@
+/* General Container */
+.subscriptionplan-plan-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Cards */
+.subscriptionplan-plan-card {
+  width: 250px;
+  height: 200px; /* Increased height to accommodate the layout */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Added background color */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.subscriptionplan-plan-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Specific Background Colors for Each Plan */
+.subscriptionplan-plan-card.daily {
+  /* Background color for Daily Plan (Orange-ish) */
+  /* You can adjust this color to match the image */
+  background-color: #FFA500; /* Example Orange */
+}
+
+.subscriptionplan-plan-card.weekly {
+  /* Background color for Weekly Plan (Green-ish) */
+  background-color: #90EE90; /* Example Light Green */
+}
+
+.subscriptionplan-plan-card.monthly {
+  /* Background color for Monthly Plan (Blue-ish) */
+  background-color: #ADD8E6; /* Example Light Blue */
+}
+
+.subscriptionplan-plan-card.quarterly {
+  /* Background color for Quarterly Plan (Purple-ish) */
+  background-color: #D8BFD8; /* Example Light Purple */
+}
+
+/* Image Styling */
+.subscriptionplan-plan-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Make sure images cover the area */
+  transition: opacity 0.3s ease; /* Transition for image hover effect */
+}
+
+/* Hover Effect to Dim Image */
+.subscriptionplan-plan-card:hover .subscriptionplan-plan-image {
+  opacity: 0.7; /* Dim the image on hover */
+}
+
+/* Plan Name */
+.subscriptionplan-name {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  position: absolute;
+  bottom: 0; /* Position at the bottom */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Text Styling */
+.text h2 {
+  text-align: center;
+}

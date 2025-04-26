@@ -1,0 +1,63 @@
+/* App.css */
+.home-menu-title {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.home-menu-title h1 {
+  color: #daa520;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.home-menu-title h1 span {
+  color: #daa520;
+}
+
+.home-menu-title h2 {
+  color: #555;
+  font-size: 1.85em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.home-menu-title h2 span {
+  color: #daa520;
+  font-style: italic;
+}
+
+/* Menu.css */
+
+.home-menu-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.home-menu-item img:hover {
+  transform: scale(1.05);
+}
+
+.home-menu-grid {
+  justify-content: center;
+  gap: 30px;
+}
+
+.home-menu-item img{
+  text-align: center;
+  transition: 0.5s;
+}
+
+.home-menu-item img {
+  width: 400px;
+  /* Adjust the width as needed */
+  height: auto;
+  border-radius: 10px;
+}
+
+.home-menu-label h3 {
+  font-size: 1.35em;
+  color: #333;
+  text-align: center;
+  font-style: italic;
+}

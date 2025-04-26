@@ -1,0 +1,63 @@
+.admin-navbar {
+  height: 60px; /* Fixed height for navbar */
+  padding: 0 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e1e6f1;
+  box-shadow: -7.829px 11.607px 20px #908fa017;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 280px;
+}
+
+.admin-navbar-menu {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.admin-navbar-logo {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-navbar-logo img {
+  height: 30px;
+  width: auto;
+}
+
+.admin-navbar-profile {
+  position: relative;
+}
+
+.profile-pic {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #e1e6f1;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #e1e6f1;
+  cursor: pointer;
+}
+
+.profile-dropdown li:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,133 @@
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .top-bar {
+    background-color: #E0C87C;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .top-bar p{
+    color: #fff;
+  }
+  
+  
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .main-header .header-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  .main-header .left {
+    justify-content: flex-start;
+  }
+  
+  .main-header .center {
+    align-items: center;
+  }
+  
+  .main-header .right {
+    justify-content: flex-end;
+  }
+  
+  .logo {
+    height: auto;
+    width: 150px;
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .main-nav li {
+    margin: 0 10px;
+    color: black; 
+    cursor: pointer;
+    font-size: medium;
+  }
+  
+  .header-section-right img {  
+    padding: 10px;
+    width: 20px;
+    padding-right: 20px;
+  }
+  
+  .icon {
+      width: 20px;
+      height: auto;
+  }
+  
+  .main-header button{
+    background: transparent;
+    font-size: 16px;
+    color: #49557e;
+    border: 1px solid #E0C87C;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .main-header button:hover{
+    background-color: #fff4f2;
+  }
+
+  .navbar-menu li.active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: #49557e;
+    font-size: 18px;
+  }
+
+  .navbar-menu :hover{
+    text-decoration: underline;
+  }
+  
+  @keyframes slide-in {
+  0% {
+    transform: translateX(100%); /* Start outside the right edge */
+  }
+  100% {
+    transform: translateX(-100%); /* Move completely to the left edge */
+  }
+}
+
+/* Styles for the sub-bar and its paragraph */
+.sub-bar {
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.sub-bar p {
+  display: inline-block; /* Ensure it's treated as a block for animation */
+  animation: slide-in 10s linear infinite; /* Continuous sliding animation */
+}
+
+/* Main header styles */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}

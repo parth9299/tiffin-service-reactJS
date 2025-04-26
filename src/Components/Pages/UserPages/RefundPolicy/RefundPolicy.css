@@ -1,0 +1,27 @@
+.refund-policy-container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .refund-policy-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+  
+  .refund-policy-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .refund-policy-email {
+    color: #0073e6; /* Blue color for email link */
+    text-decoration: none;
+  }
+  
+  .refund-policy-email:hover {
+    text-decoration: underline;
+  }
+  

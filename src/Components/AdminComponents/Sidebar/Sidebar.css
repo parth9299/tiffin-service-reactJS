@@ -1,0 +1,74 @@
+/* Sidebar container */
+.sidebar {
+  width: 250px;
+  background-color: #383d7c;
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed; /* Fix sidebar to the left */
+  top: 0; /* Remove top margin */
+  left: 0; /* Align to the left */
+  z-index: 1; /* Ensure it stays on top */
+}
+
+/* Logo section */
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo h1 {
+  font-size: 24px;
+  color: whites; /* Aqua color for "Tiffin Admin" */
+}
+
+/* Menu section */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menu items */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background-color: #1a1c2e; /* Slightly lighter background on hover */
+}
+
+.sidebar-item.active {
+  background-color: #ffffff; /* Active item background */
+  color: #0c0e1f; /* Dark text for active item */
+}
+
+/* Icons */
+.sidebar-icon {
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+/* Text */
+.sidebar-text {
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px; /* Reduce width on smaller screens */
+  }
+  .sidebar-icon {
+    font-size: 16px; /* Adjust icon size */
+  }
+  .sidebar-text {
+    font-size: 12px; /* Adjust text size */
+  }
+}

@@ -1,0 +1,81 @@
+.contact-section {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contact Info Section */
+.contact-info h2 {
+  color: #E0C87C; /* Dark green */
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 30%;
+  border: 1px solid #E0C87C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-item p {
+  color: #333;
+}
+
+/* Email Form Section */
+.email-form {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 10px;
+  max-width: 900px; /* Set max width for responsiveness */
+  margin: 0 auto; /* Center the grid */
+}
+
+.form-grid input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.email-form button {
+  background-color: #E0C87C; /* Green Submit Button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 10px;
+}

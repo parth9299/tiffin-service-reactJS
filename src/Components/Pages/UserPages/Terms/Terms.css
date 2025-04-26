@@ -1,0 +1,21 @@
+.main {
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; 
+    text-align: left; 
+    text-align: justify;
+    box-sizing: border-box !important;
+    display: block;
+}
+
+.main h2{
+    text-align: center;
+}
+
+.main p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: justify; 
+}

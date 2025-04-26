@@ -1,0 +1,151 @@
+/* Existing Login Styles */
+.user-login {
+  position: fixed; /* Use fixed instead of absolute to cover the whole viewport */
+  z-index: 1000; /* Increase z-index to ensure it's on top of all other elements */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 32, 32, 0.9); /* Darker overlay */
+  display: grid;
+}
+
+.user-login-container {
+  place-self: center;
+  width: max(23vw, 330px);
+  color: #808080;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: fadeIn 2s;
+}
+
+.user-login-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.user-login-title img {
+  width: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-login-title img:hover {
+  transform: rotate(90deg); /* Rotate the image on hover */
+}
+
+.user-login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between input fields */
+}
+
+.user-login-inputs input {
+  outline: none;
+  border: 1px solid #c9c9c9;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.user-login-container button {
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+  background-color: #E0C87C; /* Button color */
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.user-login-condition {
+  display: flex;
+  align-items: start;
+  gap: -20px; /* Space between checkbox and text */
+}
+
+.user-login-condition input {
+  margin-top: 20px; /* Margin for checkbox */
+}
+
+.user-login p span {
+  color: #E0C87C; /* Color for links */
+  font-weight: 500; /* Bold text for links */
+}
+
+.user-login-container p span{
+  cursor: pointer;
+}
+
+/* ResetPassword Styles */
+
+/* Overlay Style */
+.reset-password-container {
+  position: fixed; /* Fixed position to cover the viewport */
+  top: 0; 
+  left: 0; 
+  z-index: 1000; /* Ensure it is above other elements */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 32, 32, 0.9); /* Darker overlay */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+/* Form Container Style */
+.reset-password-form {
+  width: max(23vw, 330px); /* Match Login form width */
+  background-color: white; 
+  border-radius: 8px; 
+  padding: 30px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; /* Consistent spacing */
+}
+
+/* Heading Style */
+.reset-password-form h2 {
+ text-align:center; 
+ color:black; /* Match Login heading color */ 
+ margin-bottom :20px ;
+}
+
+/* Input Style */
+.reset-password-form input[type="email"] {
+ width :100%; 
+ padding :10px ; 
+ border :1px solid #c9c9c9 ; 
+ border-radius :4px ; 
+ outline :none ; /* Remove default outline */ 
+ font-size :14px ;
+}
+
+/* Submit Button Style */
+.reset-password-form button[type="submit"] {
+ background-color :#E0C87C ; /* Match Login button color */ 
+ color:white ; 
+ border:none ; 
+ border-radius :4px ; 
+ padding :10px ; 
+ font-size :15px ; 
+ cursor:pointer ; 
+ transition :background-color .2s ; /* Smooth transition */ 
+}
+
+/* Close Button Style in Reset Password Container */
+.reset-password-container img {
+ margin-left :95%; 
+ width :16px ; 
+ cursor:pointer ; 
+ transition :transform .2s ease-in-out ;
+}
+
+.reset-password-container img:hover {
+ transform :rotate(90deg); /* Rotate the image on hover */ 
+}

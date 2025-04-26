@@ -1,0 +1,94 @@
+/* Testimonial Container */
+.testimonial {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: space-between;
+  transition: transform 0.5s ease-in-out, padding 0.5s ease-in-out; /* Smooth transitions for padding and scaling */
+}
+
+.testimonial:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+/* Testimonial Content */
+.testimonial-content {
+  display: flex; /* Arrange elements horizontally */
+  align-items: center; /* Align content vertically */
+  justify-content: center; /* Center content horizontally */
+  width: 100%;
+}
+
+/* Arrow Buttons */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0;
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth scaling and color change on hover */
+}
+
+.arrow img {
+  width: 100%; /* Make image fill the button */
+  height: auto;
+}
+
+.arrow:hover {
+  transform: scale(1.1); /* Enlarge arrow slightly on hover */
+}
+
+/* Quote Section */
+.quote {
+  font-size: 3em;
+  color: #ddd;
+}
+
+.quote img {
+  width: 120px;
+}
+
+/* Testimonial Text */
+.testimonial-text {
+  font-size: 1.2em;
+  margin: 0 20px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade effect for text changes */
+}
+
+.fade-out {
+  opacity: 0; /* Class for fading out text */
+}
+
+.fade-in {
+  opacity: 1; /* Class for fading in text */
+}
+
+/* Rating Section */
+.testimonial-rating {
+  color: gold;
+}
+
+/* Author Section */
+.testimonial-author {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Dot Indicators for Navigation */
+.testimonial-dots span {
+  margin: 0 3px;
+  font-size: 1.5em;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.testimonial-dots span.active {
+    color: #333; /* Highlight active dot */
+    transition: color .3s ease; /* Smooth transition for color change */
+}

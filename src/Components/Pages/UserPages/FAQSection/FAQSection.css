@@ -1,0 +1,36 @@
+.faq-section {
+  display: flex; /* Arrange text and image side by side */
+  align-items: center; /* Vertically align items */
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: #f9f9f9; /* Add a subtle background color similar to the image */
+}
+
+.faq-text {
+  flex: 1; /* Take up remaining space */
+  padding-right: 20px; /* Add some space between the text and the image */
+}
+
+.faq-text h1 {
+  margin-left: 35%;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333; /* Adjust heading color */
+}
+
+.faq-text p {
+  margin-left: 35%;
+  font-size: 1em;
+  color: #555; /* Adjust paragraph color */
+  line-height: 1.5; /* Improve readability */
+}
+
+.faq-image {
+  flex: 1; /* Allow the image to take up space */
+  text-align: center; /* Center the image */
+}
+
+.faq-image img {
+  max-width: 450px; /* Ensure the image doesn't overflow its container */
+  max-height: 550px; /* Maintain aspect ratio */
+}

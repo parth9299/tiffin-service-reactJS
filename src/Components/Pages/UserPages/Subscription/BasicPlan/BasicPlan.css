@@ -1,0 +1,75 @@
+.basic-plan-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  width: 80%; /* Reduce width */
+  margin: auto; /* Add auto margin to center horizontally */
+  padding: 20px;
+}
+
+.basic-plan-container h2 {
+  color: black;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.basic-plan-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.basic-plan-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 400px; /* Smaller box width */
+}
+
+.basic-plan-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.basic-plan-item .days {
+  color: #777;
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+
+ .sub-price {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.basic-plan-item .price::before {
+  content: "\20B9 "; /* Indian Rupee Symbol */
+}
+
+.basic-plan-item .meals {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+.basic-plan-item .meals li {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.basic-plan-item .membership-button {
+  background-color: #E0C87C; /* Orange */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 1em;
+}

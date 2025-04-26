@@ -1,0 +1,54 @@
+    .place-order {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 50px;
+        margin-top: 100px;
+        max-width: 1200px;
+        /* Add max-width to prevent excessive width */
+        margin: auto;
+        /* Center horizontally */
+    }
+
+    .place-order-left {
+        padding-bottom: 20px;
+        width: 100%;
+        max-width: max(30%, 500px);
+    }
+
+    .place-order-left input {
+        margin-bottom: 15px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #c5c5c5;
+        border-radius: 4px;
+    }
+
+    .place-order-left .multi-felids {
+        width: 523px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .place-order-right {
+        width: 100%;
+        max-width: max(40%, 500px);
+    }
+
+    .place-order .cart-total {
+        margin-top: 30px;
+    }
+
+ 
+    @media (max-width: 900px) {
+        .place-order {
+            flex-direction: column;
+           
+        }
+
+        .place-order-left,
+        .place-order-right {
+            max-width: 100%;
+           
+        }
+    }

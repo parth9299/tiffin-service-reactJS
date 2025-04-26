@@ -1,0 +1,68 @@
+/* DailyMenu.css */
+
+.menu-container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.meal-section {
+  margin: 20px 0;
+}
+
+.meal-section h2 {
+  background-color: #493D9E;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px 0;
+}
+
+.menu-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 200px;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.menu-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  /* Add some space between the image and the dish */
+}
+
+.day {
+  background-color: #001f3f;
+  /* Dark blue background */
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  /* Add space below the day */
+}
+
+.dish {
+  margin-top: 10px;
+  /* Add some space between the day and the dish name */
+  font-weight: bold;
+  color: #333;
+}
