@@ -26,9 +26,9 @@ body {
 }
 .back-button{
   
-  height: 50px;
+  height: 40px;
   width: 100%;
-  padding: 8px;
+  padding: 3px;
   font-size: 17px;
   background: #80808021;
   border-radius: 50%;
@@ -36,4 +36,26 @@ body {
   display: flex;
   align-items: center;
 
+}
+.admin-edit-btn {
+  background-color: white  !important;
+  color: #9bd732;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-edit-btn:hover {
+  background-color: #fff !important;
+  color: #383d7c;
+}
+
+.admin-delete-btn {
+  background-color: #fff !important;
+  color: #dc3545;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-delete-btn:hover {
+  color: #383d7c;
 }

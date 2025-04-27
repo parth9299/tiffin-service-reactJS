@@ -1,4 +1,5 @@
-export const apiRequest = async (url, method = "POST", data = {}, token = "", isFormData = false) => {
+export const apiRequest = async (url, method = "POST", data = {},  isFormData = false) => {
+     const token = localStorage.getItem("token");
     try {
         const headers = {
             ...(token && { Authorization: `Bearer ${token}` }),

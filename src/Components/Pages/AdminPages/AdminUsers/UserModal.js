@@ -15,7 +15,7 @@ const UserModal = ({ showPopup, handleClosePopup, editUser, onSuccess }) => {
     useEffect(() => {
         fetchRoles();
     }, []);
-    console.log(roleList, "roleList")
+
     const fetchRoles = async () => {
         try {
             const response = await fetch(BASE_URL + '/roleList');
@@ -54,9 +54,7 @@ const UserModal = ({ showPopup, handleClosePopup, editUser, onSuccess }) => {
         }
     
         const token = localStorage.getItem("token"); // or wherever your token is stored
-        const url = editUser
-            ? `${BASE_URL}/${editUser.id}`
-            : `${BASE_URL}/adminRegister`;
+        const url = `${BASE_URL}/adminRegister`;
     
         const { success, data } = await apiRequest(url, "POST", formData, token);
     

@@ -50,33 +50,6 @@ th {
     color: white;
 }
 
-.admin-edit-btn {
-    background-color: #383d7c;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.admin-edit-btn:hover {
-    background-color: #383d7c;
-}
-
-.admin-delete-btn {
-    background-color: #F44336;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.admin-delete-btn:hover {
-    background-color: #d32f2f;
-}
-
 .admin-modal {
     display: flex;
     justify-content: center;

@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.modal-content {
+.admin-layout .modal-content {
   position: relative;
   background-color: white;
   padding: 40px;

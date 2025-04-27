@@ -47,14 +47,14 @@ function App({ setShowLogin }) {
         <Route path='/works' element={<Works />} />
         <Route path='/faqsection' element={<FAQSection />} />
         <Route path='/about' element={<AboutSection />} />
-        <Route path='/dailymenu' element={<DailyMenu/>}/>
-        <Route path='/weeklyplan' element={<BasicPlan/>}/>
-        <Route path='/monthlyplan' element={<StandardPlan/>}/>
-        <Route path='/quarterlyplan' element={<PremiumPlan/>}/>
-        <Route path='/subscriptionplan' element={<SubscriptionPlans/>}/>
-        <Route path='/breakfast' element={<Breakfast/>}/>
-        <Route path='/lunch' element={<Lunch/>}/>
-        <Route path='/dinner' element={<Dinner/>}/>
+        <Route path='/dailymenu' element={<DailyMenu />} />
+        <Route path='/weeklyplan' element={<BasicPlan />} />
+        <Route path='/monthlyplan' element={<StandardPlan />} />
+        <Route path='/quarterlyplan' element={<PremiumPlan />} />
+        <Route path='/subscriptionplan' element={<SubscriptionPlans />} />
+        <Route path='/breakfast' element={<Breakfast />} />
+        <Route path='/lunch' element={<Lunch />} />
+        <Route path='/dinner' element={<Dinner />} />
       </Route>
       <Route path='/admin/login' element={<Login />} />
       <Route path='/admin/forgetpass' element={<ForgetPass />} />

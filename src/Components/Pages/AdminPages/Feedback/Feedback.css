@@ -121,7 +121,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .modal-content {
+    .admin-layout .modal-content {
         width: 90%;
     }
 }

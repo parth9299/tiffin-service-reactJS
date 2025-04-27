@@ -1,0 +1,217 @@
+.tiffin .admin-table-container {
+  width: calc(100% - 260px);
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+  margin-left: 255px;
+  display: block;
+  margin-right: 20px;
+}
+
+.tiffin .admin-table-container h2 {
+  color: #333;
+}
+
+.tiffin .admin-add-user-btn {
+  background-color: #383d7c;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+.tiffin .admin-add-user-btn:hover {
+  background-color: black;
+}
+
+.tiffin table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tiffin th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.tiffin th {
+  color: white;
+  background-color: #383d7c;
+}
+
+.tiffin .admin-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.tiffin .admin-popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 600px;
+  text-align: center;
+}
+
+.tiffin .admin-popup-content h3 {
+  margin-bottom: 15px;
+}
+
+.tiffin .admin-popup-content input,
+.admin-popup-content select,
+.admin-popup-content textarea {
+  width: 100%;
+  padding: 8px;
+  /* margin: 5px 0; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.tiffin .admin-popup-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  /* justify-content: space-between; */
+  margin-top: 10px;
+}
+
+.tiffin .admin-popup-buttons button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tiffin .admin-popup-buttons button:first-child {
+  background-color: #383d7c;
+  color: white;
+}
+
+.tiffin .admin-popup-buttons button:first-child:hover {
+  background-color: #383d7c;
+}
+
+.tiffin .admin-cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.tiffin .admin-cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.error {
+  display: flex;
+  font-size: 0.90rem;
+}
+
+.tiffin-desc {
+  white-space: normal;
+  /* allow wrapping */
+  overflow: hidden;
+  /* hide overflow */
+  display: -webkit-box;
+  /* necessary for line-clamp */
+  -webkit-box-orient: vertical;
+  /* necessary for line-clamp */
+  -webkit-line-clamp: 2;
+  /* limit to 2 lines */
+  word-break: break-word;
+  /* wrap long words if needed */
+}
+
+.switch input[type=checkbox] {
+  display: none;
+}
+
+.switch .switch-check {
+  background-color: #e0e0e0;
+  border: 1px solid #dee2e6;
+  border-radius: 2.3rem;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.switch .switch-check {
+  width: 8rem !important;
+  height: 1.6rem;
+}
+
+.switch input:checked+.switch-check .switch-btn {
+  background-color: #9bd732;
+  background-position: -21.875rem 0;
+  left: .2rem;
+  width: 3.2rem;
+}
+
+.switch .switch-btn {
+  background-color: #de002e;
+  border-radius: 2rem;
+  box-shadow: none;
+  height: 1.2rem;
+  left: 3rem;
+  position: relative;
+  top: .15rem;
+  transition: left .4s ease, background-position .4s ease;
+  width: 3.65rem;
+  z-index: 2;
+}
+
+.switch input:checked+.switch-check .active-switch {
+  color: #fff;
+}
+
+.switch .active-switch,
+.switch .deactive-switch {
+  color: #000;
+  font-size: .7rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: .513rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+.switch input:checked+.switch-check .deactive-switch {
+  color: #000;
+}
+
+.switch .deactive-switch {
+  margin-left: 3.5rem;
+}
+
+.switch .de-active {
+  width: 4.5rem;
+  left: 3.2rem;
+}
+
+.table-pagination {
+  align-items: center;
+  display: flex
+;
+  justify-content: space-between;
+  margin: 1rem 0 0;
+}
+.table-pagination>.record-perpage {
+    align-items: center;
+    display: flex
+;
+    padding: 0;
+}
