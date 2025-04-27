@@ -195,10 +195,10 @@ const AddTiffinModal = ({ showPopup, handleClosePopup, editDetails, onSuccess },
                                         {values.imageURL.map((file, idx) => (
                                             <img
                                                 key={idx}
-                                                src={
-                                                    typeof file === 'string'
-                                                        ? file
-                                                        : URL.createObjectURL(file)
+                                                src={file
+                                                    // typeof file === 'string'
+                                                    //     ? file
+                                                    //     : URL?.createObjectURL(file)
                                                 }
                                                 alt={`Tiffin ${idx + 1}`}
                                                 style={{ width: "100px", height: "80px", objectFit: "cover", margin: "5px" }}
