@@ -9,22 +9,33 @@ import { DeleteSvg, EditSvg } from "../../../../Helper/iconHelper";
 import { ApiResponseMessage, commonConfirmBox } from "../../../Common/ApiResponse";
 import { DANGER, SUCCESS } from "../../../../Helper/constent";
 import { apiRequest } from "../../../../Helper/api";
-import CommonPagination from  "../../../Common/Pagination"
+import CommonPagination from "../../../Common/Pagination"
 const TiffinService = () => {
   const [tiffin, setTiffin] = useState([]);
   const [edit, setEdit] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage, setDataPerPage] = useState(10);
+  const [totalRecords, setTotalRecords] = useState(10);
+  const [searchData, setSearchData] = useState("");
   useEffect(() => {
     fetchUsers();
-  }, []);
-
+  }, [currentPage, searchData]);
+  const dispatchData = {
+    searchText: searchData,
+    pagination: {
+      limit: dataPerPage,
+      page: currentPage,
+      orderKey: "createdDate",
+      orderBy: "ASC",
+    },
+  };
   const fetchUsers = async () => {
     try {
-      const response = await fetch(BASE_URL + '/listTiffin');
-      if (!response.ok) throw new Error("Failed to fetch users.");
-      const data = await response.json();
-      setTiffin(data.data.list);
+      const response = await apiRequest(BASE_URL + '/listTiffin', "POST", dispatchData);
+      if (!response.success) throw new Error("Failed to fetch users.");
+      setTiffin(response.data.data.list);
+      setTotalRecords(response.data.data.totalRecords)
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -188,7 +199,13 @@ const TiffinService = () => {
         columns={columns}
         data={tiffin?.length > 0 ? tiffin : []}
       />
-      <CommonPagination/>
+      <CommonPagination
+        dataPerPage={dataPerPage}
+        totalData={totalRecords}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        setDataPerPage={setDataPerPage}
+      />
       {showPopup && (
         <AddTiffinModal
           showPopup={showPopup}

@@ -21,6 +21,7 @@
   cursor: pointer;
 
 }
+
 .tiffin .admin-add-user-btn:hover {
   background-color: black;
 }
@@ -204,14 +205,67 @@ td {
 
 .table-pagination {
   align-items: center;
-  display: flex
-;
+  display: flex;
   justify-content: space-between;
   margin: 1rem 0 0;
 }
+
 .table-pagination>.record-perpage {
-    align-items: center;
-    display: flex
-;
-    padding: 0;
+  align-items: center;
+  display: flex;
+  padding: 0;
+}
+
+.table-pagination>.record-perpage .dropdown .btn {
+  background: #0000;
+  border-color: #b2b6bb;
+  border-radius: 5px;
+  color: #212121;
+  min-width: 3.1rem;
+  padding: .2rem .5rem;
+}
+
+.dropdown-toggle:after {
+  border-bottom: 0;
+  border-left: .3em solid #0000;
+  border-right: .3em solid #0000;
+  border-top: .3em solid;
+  content: "";
+  display: inline-block;
+  margin-left: .255em;
+  vertical-align: .255em;
+}
+
+.table-pagination>.record-perpage .totle_records {
+  font-size: .8rem;
+  line-height: normal;
+  padding: 0 0 0 .5rem;
+}
+
+.table-pagination .pagination {
+  gap: .7rem;
+}
+
+.table-pagination .pagination {
+  margin: 0;
+}
+
+.table-pagination .pagination .page-item.disabled .page-link {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.table-pagination .pagination .page-item .page-link {
+  background-color: #fff;
+  border-radius: 30px;
+  color: #2a3142;
+}
+.table-pagination .pagination .page-item.active .page-link {
+  background-color: #002e70;
+  color: #fff;
+}
+.table-pagination .pagination .page-item.active .page-link {
+  border-color: #002e70;
+  color: #fff !important;
 }

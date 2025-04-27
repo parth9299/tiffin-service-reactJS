@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Pagination, PaginationItem } from "reactstrap";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
 export default function CommonPagination({
     dataPerPage,
@@ -13,10 +13,10 @@ export default function CommonPagination({
 }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggleDropdown = () => setDropdownOpen((prevState) => !prevState);
-    
+
     // Calculate total number of pages
     const totalPages = Math.ceil(totalData / dataPerPage);
-    
+
     // Calculate page numbers to display
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -40,6 +40,7 @@ export default function CommonPagination({
 
     // Handle changes in data per page
     const handleDataPerPageChange = (event) => {
+        setCurrentPage(1)
         setDataPerPage(Number(event));
     };
 
@@ -69,25 +70,36 @@ export default function CommonPagination({
             </div>
             <Pagination>
                 {/* First and Previous buttons */}
-                <PaginationItem first onClick={() => paginate(1)} disabled={currentPage === 1} />
-                <PaginationItem previous onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
-                
+                <PaginationItem>
+                    <PaginationLink first onClick={() => paginate(1)} disabled={currentPage === 1}
+                    />
+                </PaginationItem>
+                <PaginationItem previous onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} s>
+                    <PaginationLink
+                        href="#"
+                        previous
+                    />
+                </PaginationItem>
                 {/* Show ellipsis if there are pages before the range */}
-                {start !== 1 && <PaginationItem disabled><span>...</span></PaginationItem>}
-                
+                {start !== 1 && <PaginationItem disabled><PaginationLink><span>...</span></PaginationLink> </PaginationItem>}
+
                 {/* Render page numbers dynamically */}
                 {pageNumbers.slice(start - 1, end).map((number) => (
                     <PaginationItem key={number} onClick={() => paginate(number)} active={currentPage === number}>
-                        {number}
+                        <PaginationLink> {number}</PaginationLink>
                     </PaginationItem>
                 ))}
-                
+
                 {/* Show ellipsis if there are pages after the range */}
-                {end !== pageNumbers.length && <PaginationItem disabled><span>...</span></PaginationItem>}
-                
+                {end !== pageNumbers.length && <PaginationItem disabled><PaginationLink><span>...</span></PaginationLink> </PaginationItem>}
+
                 {/* Next and Last buttons */}
-                <PaginationItem next onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} />
-                <PaginationItem last onClick={() => paginate(totalPages)} disabled={currentPage === totalPages} />
+                <PaginationItem  >
+                    <PaginationLink next onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} />
+                </PaginationItem>
+                <PaginationItem  >
+                    <PaginationLink last onClick={() => paginate(totalPages)} disabled={currentPage === totalPages} />
+                </PaginationItem>
             </Pagination>
         </div>
     );
