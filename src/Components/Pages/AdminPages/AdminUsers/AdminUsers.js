@@ -5,91 +5,65 @@ import DataView from "../../../Common/Table/CommonTable";
 import Breadcrumb from "../../../Common/Table/Breadcrumb";
 import { Button } from "reactstrap";
 import UserModal from "./UserModal";
+import { ApiResponseMessage, commonConfirmBox } from "../../../Common/ApiResponse";
+import { apiRequest } from "../../../../Helper/api";
+import { DANGER, SUCCESS } from "../../../../Helper/constent";
+import { DeleteSvg, EditSvg } from "../../../../Helper/iconHelper";
+import CommonPagination from "../../../Common/Pagination";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ id: "", username: "", email: "" });
   const [editUser, setEditUser] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  console.log({ users });
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage, setDataPerPage] = useState(10);
+  const [totalRecords, setTotalRecords] = useState(0);
+  const [searchData, setSearchData] = useState("");
+  
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [currentPage, dataPerPage]);
+
+  const dispatchData = {
+    searchText: searchData,
+    pagination: {
+      limit: dataPerPage,
+      page: currentPage,
+      orderKey: "createdDate",
+      orderBy: "ASC",
+    },
+  };
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch(BASE_URL + '/adminList');
-      if (!response.ok) throw new Error("Failed to fetch users.");
-      const data = await response.json();
+      const { success, data } = await apiRequest(BASE_URL + '/adminList', "POST", dispatchData);
+      if (!success) throw new Error("Failed to fetch users.");
       setUsers(data.data.list);
+      setTotalRecords(data.data.totalRecords)
     } catch (error) {
       console.error("Error fetching users:", error);
     }
   };
-
-  
-
-  // const handleAddUser = async () => {
-  //   if (!newUser.id || !newUser.username || !newUser.email) {
-  //     alert("Please fill in all fields!");
-  //     return;
-  //   }
-  //   try {
-  //     const response = await fetch(BASE_URL + '/adminRegister', {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(newUser),
-  //     });
-  //     if (response.ok) {
-  //       fetchUsers();
-  //       handleClosePopup();
-  //     } else {
-  //       console.error("Failed to add user.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding user:", error);
-  //   }
-  // };
 
   const handleEdit = (user) => {
     setEditUser(user);
     setNewUser({ ...user });
     setShowPopup(true);
   };
-  // const handleChange = (e) => {
-  //   setNewUser({ ...newUser, [e.target.name]: e.target.value });
-  // };
-  // const handleUpdateUser = async () => {
-  //   if (!editUser) return;
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/${editUser.id}`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(newUser),
-  //     });
-  //     if (response.ok) {
-  //       fetchUsers();
-  //       handleClosePopup();
-  //     } else {
-  //       console.error("Failed to update user.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating user:", error);
-  //   }
-  // };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this user?")) return;
-    try {
-      const response = await fetch(`${BASE_URL}/adminDelete/${id}`, { method: "POST" });
-      if (response.ok) {
+    const message = "Are you sure you want to delete this user?"
+    const response = await commonConfirmBox(message);
+    if (response) {
+      const url = `${BASE_URL}/adminDelete/${id}`;
+      const { success, data } = await apiRequest(url, "POST");
+      if (success) {
         fetchUsers();
+        ApiResponseMessage(data.message, SUCCESS);
       } else {
-        console.error("Failed to delete user.");
+        ApiResponseMessage(data.message, DANGER);
       }
-    } catch (error) {
-      console.error("Error deleting user:", error);
     }
   };
 
@@ -98,6 +72,7 @@ const AdminUsers = () => {
     setEditUser(null);
     setNewUser({ id: "", username: "", email: "" });
   };
+
   const columns = [
     {
       title: 'Username',
@@ -127,14 +102,14 @@ const AdminUsers = () => {
     {
       title: 'Actions',
       key: 'actions',
-      render: (user) => (
+      width: 150,
+      render: (data) => (
         <>
-          {console.log(user, "user")}
-          <button className="admin-edit-btn" onClick={() => handleEdit(user)}>
-            Edit
+          <button className="admin-edit-btn" onClick={() => handleEdit(data)}>
+            <EditSvg />
           </button>
-          <button className="admin-delete-btn" onClick={() => handleDelete(user.id)}>
-            Delete
+          <button className="admin-delete-btn" onClick={() => handleDelete(data.id)}>
+            <DeleteSvg />
           </button>
         </>
       ),
@@ -143,59 +118,26 @@ const AdminUsers = () => {
 
   return (
     <div className="admin-table-container">
-      {/* <div className="d-flex justify-content-between">
-        <h2> Users</h2>
-        <button className="admin-add-user-btn" onClick={() => setShowPopup(true)}>+ Add User</button>
-      </div> */}
       <Breadcrumb title={'Users'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add User</Button>} />
       <DataView
         columns={columns}
         data={users?.length > 0 ? users : []}
       />
-      {/* {showPopup && (
-        <div className="admin-popup">
-          <div className="admin-popup-content">
-            <h3>{editUser ? "Edit User" : "Add New User"}</h3>
-            <input
-              type="text"
-              name="id"
-              placeholder="User ID"
-              value={newUser.id}
-              onChange={handleChange}
-              disabled={!!editUser}
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={newUser.username}
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={newUser.email}
-              onChange={handleChange}
-            />
-            <div className="admin-popup-buttons">
-              <button onClick={editUser ? handleUpdateUser : handleAddUser}>
-                {editUser ? "Update" : "Add"}
-              </button>
-              <button className="admin-cancel-btn" onClick={handleClosePopup}>Cancel</button>
-            </div>
-          </div>
-        </div>
-      )} */}
-
-{showPopup && (
-  <UserModal
-    showPopup={showPopup}
-    handleClosePopup={handleClosePopup}
-    editUser={editUser}
-    onSuccess={fetchUsers} // callback to reload users after add/edit
-  />
-)}
+      <CommonPagination
+        dataPerPage={dataPerPage}
+        totalData={totalRecords}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        setDataPerPage={setDataPerPage}
+      />
+      {showPopup && (
+        <UserModal
+          showPopup={showPopup}
+          handleClosePopup={handleClosePopup}
+          editUser={editUser}
+          onSuccess={fetchUsers} // callback to reload users after add/edit
+        />
+      )}
 
     </div>
   );

@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { assets } from '../../../Assets/Images/assets';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../../../Helper/BaseURL';
+import { apiRequest } from '../../../Helper/api';
+import { ApiResponseMessage } from '../../Common/ApiResponse';
+import { DANGER, SUCCESS } from '../../../Helper/constent';
 
-const Login = ({ setShowLogin }) => {
-    const [currState, setCurrState] = useState("Sign Up"); // Start with Sign Up state as default
+const Login = ({ setShowLogin, token }) => {
+    const [currState, setCurrState] = useState(token ? "Set Password" : 'Sign Up');
     const [formData, setFormData] = useState({
         name: '',
         address: '',
         mobile: '',
         email: '',
-        password: ''
+        password: '',newPassword:""
     });
     const [email, setEmail] = useState(""); // State for Reset Password
     const [error, setError] = useState('');
@@ -37,9 +40,11 @@ const Login = ({ setShowLogin }) => {
                 await handleSignup();
             } else if (currState === "Reset Password") {
                 await handleResetPassword();
+            } else if (currState === "Set Password") {
+                await handlSetPassword();
             }
         } catch (error) {
-            
+
         } finally {
             setLoading(false);
         }
@@ -47,53 +52,76 @@ const Login = ({ setShowLogin }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/userLogin`, {
+            const url = `${BASE_URL}/userLogin`;
+            const { success, data } = await apiRequest(url, "POST", {
                 email: formData.email,
                 password: formData.password
             });
 
-            if (response.data.status) {
-                localStorage.setItem('token', response.data.token);
-                navigate('/dashboard');
+            if (success) {
+                localStorage.setItem('token', data.data.token);
+                localStorage.setItem('username', `${data.data.firstName} ${data.data.lastName}`);
+                localStorage.setItem('email', data.data.email);
+                navigate('/menu');
+                ApiResponseMessage(data.message, SUCCESS);  
+                // setCurrState("Login");
+                setShowLogin(false)
             } else {
-                setError(response.data.message || 'Login failed');
+                ApiResponseMessage(data.message, DANGER);
             }
         } catch (error) {
             const errorMessage = error.response?.data?.message || error.message || 'Server connection failed';
             setError(errorMessage);
         }
     };
+
 
     const handleSignup = async () => {
-        try {
-            const response = await axios.post(`${BASE_URL}/api/signup`, formData);
-            if (response.data.status) {
-                alert('Registration successful! Please login.');
-                resetForm();
-                setCurrState("Login");
-            } else {
-                setError(response.data.message || 'Registration failed');
-            }
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || error.message || 'Server connection failed';
-            setError(errorMessage);
+        const url = `${BASE_URL}/userRegister`;
+        const { success, data } = await apiRequest(url, "POST", formData);
+
+        if (success) {
+            ApiResponseMessage(data.message, SUCCESS);
+            resetForm();
+            setCurrState("Login");
+
+        } else {
+            ApiResponseMessage(data.message, DANGER);
         }
     };
-
     const handleResetPassword = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/api/reset-password`, { email });
-            if (response.data.status) {
+            const url = `${BASE_URL}/userForgot`;
+            const { success, data } = await apiRequest(url, "POST", { email });
+            if (success) {
                 setSuccessMessage("A reset link has been sent to your email.");
-                setEmail(""); // Clear email input after successful submission
+                ApiResponseMessage(data.message, SUCCESS);
+                resetForm();
+                setEmail("");
             } else {
-                setError(response.data.message || "Failed to send reset link.");
+                ApiResponseMessage(data.message, DANGER);
             }
         } catch (error) {
             setError(error.response?.data?.message || "Server connection failed");
         }
     };
+    const handlSetPassword = async () => {
+        try {
+            console.log(formData,"formData")
+            const url = `${BASE_URL}/userReset`;
+            const { success, data } = await apiRequest(url, "POST", { newPassword: formData.password, token });
+            if (success) {
 
+                ApiResponseMessage(data.message, SUCCESS);
+                resetForm();
+                setCurrState("Login");
+            } else {
+                ApiResponseMessage(data.message, DANGER);
+            }
+        } catch (error) {
+            setError(error.response?.data?.message || "Server connection failed");
+        }
+    };
     const resetForm = () => {
         setFormData({ name: '', address: '', mobile: '', email: '', password: '' });
         setEmail(""); // Reset email field for reset password
@@ -114,50 +142,71 @@ const Login = ({ setShowLogin }) => {
                     {/* Show name, address, mobile only during Sign Up */}
                     {currState === "Sign Up" && (
                         <>
-                            <input 
-                                type='text' 
-                                name='name' 
-                                placeholder='Your Name' 
-                                value={formData.name} 
-                                onChange={handleChange} 
-                                required 
+                            <div className="firstName">
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    placeholder="First Name"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <input
+                                type='text'
+                                name='address'
+                                placeholder='Enter Your Address'
+                                value={formData.address}
+                                onChange={handleChange}
+                                required
                             />
                             <input
-                                type='text' 
-                                name='address' 
-                                placeholder='Enter Your Address' 
-                                value={formData.address} 
-                                onChange={handleChange} 
-                                required 
-                            />
-                            <input 
-                                type='number' 
-                                name='mobile' 
-                                placeholder='Enter Your Mobile No.' 
-                                value={formData.mobile} 
-                                onChange={handleChange} 
-                                required 
+                                type='number'
+                                name='mobile'
+                                placeholder='Enter Your Mobile No.'
+                                value={formData.mobile}
+                                onChange={handleChange}
+                                required
                             />
                         </>
                     )}
                     {/* Email input for all states */}
-                    <input 
-                        type='email' 
-                        name='email' 
-                        placeholder='Enter Your Email' 
-                        value={currState === "Reset Password" ? email : formData.email} 
-                        onChange={(e) => currState === "Reset Password" ? setEmail(e.target.value) : handleChange(e)} 
-                        required 
-                    />
+                    {currState !== "Set Password" && (     <input
+                        type='email'
+                        name='email'
+                        placeholder='Enter Your Email'
+                        value={currState === "Reset Password" ? email : formData.email}
+                        onChange={(e) => currState === "Reset Password" ? setEmail(e.target.value) : handleChange(e)}
+                        required
+                    />)}
                     {/* Password input only for Login and Sign Up */}
-                    {(currState === "Login" || currState === "Sign Up") && (
-                        <input 
-                            type='password' 
-                            name='password' 
-                            placeholder='Enter Your Password' 
-                            value={formData.password} 
-                            onChange={handleChange} 
-                            required 
+                    {(currState === "Login" || currState === "Set Password") && (
+                        <input
+                            type='password'
+                            name='password'
+                            placeholder='Enter Your Password'
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    )}
+                    {(currState === "Set Password") && (
+                        <input
+                            type='password'
+                            name='newPassword'
+                            placeholder='Enter Your Password'
+                            value={formData.newPassword}
+                            onChange={handleChange}
+                            required
                         />
                     )}
                 </div>

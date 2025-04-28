@@ -6,6 +6,7 @@ import HomeContent from './Components/HomeContent/HomeContent'
 import Contact from './Components/Pages/UserPages/Contact/Contact';
 import Terms from './Components/Pages/UserPages/Terms/Terms';
 import ForgetPass from './Components/AdminComponents/ForgetPass/ForgetPass';
+import ResetPassword from './Components/AdminComponents/ForgetPass/ResetPassword';
 import Login from './Components/AdminComponents/Login/Login';
 import AdminLayout from './Components/AdminLayout/AdminLayout';
 import Dashboard from './Components/Pages/AdminPages/Dashboard/Dashboard';
@@ -38,6 +39,7 @@ function App({ setShowLogin }) {
     <Routes>
       <Route path="/" element={<Layout setShowLogin={setShowLogin} />}>
         <Route index element={<HomeContent />} />
+        <Route path="/res/:token" element={<HomeContent />} />
         <Route path="/menu" element={<Menu />} />
         <Route path='/contactus' element={<Contact />} />
         <Route path='/terms' element={<Terms />} />
@@ -57,6 +59,7 @@ function App({ setShowLogin }) {
         <Route path='/dinner' element={<Dinner />} />
       </Route>
       <Route path='/admin/login' element={<Login />} />
+      <Route path='/reset/:token' element={<ResetPassword  />} />
       <Route path='/admin/forgetpass' element={<ForgetPass />} />
       <Route element={<AdminLayout />}>
         <Route path='/admin/dashboard' element={<Dashboard />} />

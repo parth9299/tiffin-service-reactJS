@@ -56,7 +56,7 @@ const UserModal = ({ showPopup, handleClosePopup, editUser, onSuccess }) => {
         const token = localStorage.getItem("token"); // or wherever your token is stored
         const url = `${BASE_URL}/adminRegister`;
     
-        const { success, data } = await apiRequest(url, "POST", formData, token);
+        const { success, data } = await apiRequest(url, "POST", formData);
     
         if (success) {
             onSuccess();

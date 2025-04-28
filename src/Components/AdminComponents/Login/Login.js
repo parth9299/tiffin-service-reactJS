@@ -20,10 +20,9 @@ const Login = () => {
 
       // Assuming the API returns a success status and some data
       if (response.status === 200) {
-        // Store token or user info if needed
-    console.log(response, "response");
         
         localStorage.setItem('token', response.data.data.token); 
+        localStorage.setItem('username', response.data.data.username); 
         // Redirect to admin dashboard or desired page
         navigate('/admin/dashboard');
       } else {

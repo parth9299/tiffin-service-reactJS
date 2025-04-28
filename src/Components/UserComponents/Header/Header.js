@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Header({ setShowLogin }) {
   const [menu, setMenu] = useState("Home");
+  const name = localStorage.getItem("username")
   return (
     <header>
       <div className="top-bar">
@@ -31,11 +32,11 @@ function Header({ setShowLogin }) {
           </nav>
         </div>
 
-        <div className="header-section-right">
+        {name && <div className="header-section-right">
           <img src={assets.profile_icon} alt='Profile' className='icon' />
           <Link to='/cart'><img src={assets.basket_icon} alt='cart' className='icon' /></Link>
-        </div>
-        <button onClick={() => setShowLogin(true)}>Sign In</button>
+        </div>}
+        {!name && <button onClick={() => setShowLogin(true)}>Sign In</button>}
       </div>
     </header>
   );

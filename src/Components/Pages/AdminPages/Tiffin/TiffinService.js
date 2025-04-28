@@ -20,7 +20,8 @@ const TiffinService = () => {
   const [searchData, setSearchData] = useState("");
   useEffect(() => {
     fetchUsers();
-  }, [currentPage, searchData]);
+  }, [currentPage,dataPerPage,searchData]);
+
   const dispatchData = {
     searchText: searchData,
     pagination: {
@@ -194,7 +195,7 @@ const TiffinService = () => {
 
   return (
     <div className="admin-table-container tiffin">
-      <Breadcrumb title={'Tiffin'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add User</Button>} />
+      <Breadcrumb title={'Tiffin'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add Tiffin</Button>} />
       <DataView
         columns={columns}
         data={tiffin?.length > 0 ? tiffin : []}
