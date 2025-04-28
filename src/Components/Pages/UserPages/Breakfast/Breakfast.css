@@ -132,3 +132,30 @@
 .modal-subscribe:hover {
   background-color: #217dbb;
 }
+.add-to-cart:disabled {
+  opacity: 0.5;
+}
+.quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-container button {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.quantity-container input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  height: 30px;
+}

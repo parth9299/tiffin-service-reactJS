@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { assets } from '../../../../Assets/Images/assets';
 import './Breakfast.css';
+import { apiRequest } from '../../../../Helper/api';
+import { BASE_URL } from '../../../../Helper/BaseURL';
+import Quentity from '../../../Common/Quentity';
+import { DANGER, SUCCESS } from '../../../../Helper/constent';
+import { ApiResponseMessage } from '../../../Common/ApiResponse';
 
 const Breakfast = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedDish, setSelectedDish] = useState(null);
     const navigate = useNavigate(); // Hook for navigation
-
-    const dishes = [
-        { day: "SUNDAY", name: "Bataka Pawa", img: assets.batakapawva, price: "₹ 40", description: 'Bataka Pawa is a spiced potato and flattened rice dish.' },
-        { day: "MONDAY", name: "Dahi Vada", img: assets.daivada, price: "₹ 50", description: 'Dahi Vada is a lentil fritter soaked in yogurt and topped with chutneys.'},
-        { day: "TUESDAY", name: "Idli Sambhar", img: assets.idlishambhar, price: "₹ 40", description: 'Idli Sambar is steamed rice cakes served with spicy lentil stew.' },
-        { day: "WEDNESDAY", name: "Kachori", img: assets.kachori, price: "₹ 30", description: 'Kachori is a crispy, spicy stuffed pastry.' },
-        { day: "THURSDAY", name: "Ragada Paties", img: assets.ragadapaties, price: "₹ 40", description: 'Ragada Patties are potato patties with spiced pea curry.'},
-        { day: "FRIDAY", name: "Puttu And Curry", img: assets.puttu_and_curry, price: "₹ 60", description: 'Puttu and Curry is steamed rice cakes with spicy chickpea curry.'},
-        { day: "SATURDAY", name: "Samosa", img: assets.samosa, price: "₹ 30", description: 'Samosa is a crispy pastry stuffed with spiced potatoes.'}
-    ];
-
+    const [dishes, setDishes] = useState([])
+    const [quantity, setQuantity] = useState(1);
     const openModal = (dish) => {
         setSelectedDish(dish);
         setModalOpen(true);
@@ -26,12 +22,38 @@ const Breakfast = () => {
     const closeModal = () => {
         setModalOpen(false);
         setSelectedDish(null);
+        setQuantity(1)
     };
 
     const handleSubscribe = () => {
-        navigate('/subscriptionplan'); // Redirect to subscription page
+        navigate('/subscriptionplan');
     };
+    const fatchData = async () => {
+        try {
+            const response = await apiRequest(BASE_URL + '/tiffins', "POST", { type: "Breakfast" });
+            if (!response.success) throw new Error("Failed to fetch users.");
+            setDishes(response.data.data.list);
 
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    }
+    useEffect(() => {
+        fatchData()
+    }, [])
+    const addToCart = async () => {
+        try {
+            const url = `${BASE_URL}/addCart`;
+            const { success, data } = await apiRequest(url, "POST", { user_id: localStorage.getItem("userId"), tiffin_id: selectedDish.id, quantity });
+            if (success) {
+                ApiResponseMessage(data.message, SUCCESS);
+            } else {
+                ApiResponseMessage(data.message, DANGER);
+            }
+        } catch (error) {
+            console.log(error, "error")
+        }
+    }
     return (
         <>
             <div className="menu-container">
@@ -39,9 +61,9 @@ const Breakfast = () => {
                 <div className="breakfast-menu-grid">
                     {dishes.map((dish) => (
                         <div className="menu-item" key={dish.day} onClick={() => openModal(dish)}>
-                            <img src={dish.img} alt={dish.name} />
-                            <div className="day">{dish.day}</div>
-                            <div className="dish">{dish.name}</div>
+                            <img src={dish.imageURL} alt={dish.tiffinName} />
+                            <div className="day">{dish.tiffinName}</div>
+                            {/* <div className="dish">{dish.tiffinName}</div> */}
                         </div>
                     ))}
                 </div>
@@ -49,18 +71,21 @@ const Breakfast = () => {
 
             {/* Modal */}
             {modalOpen && selectedDish && (
-                <div className="modal-overlay">
+                <div className="modal-overlay bg-light">
                     <div className="modal-content">
                         <button className="close-button" onClick={closeModal}>✖</button>
                         <div className="modal-left">
-                            <img src={selectedDish.img} alt='' />
-                            <h3>{selectedDish.name}</h3>
-                            <button className="add-to-cart">Add to Cart</button>
+                            <img src={selectedDish.imageURL} alt='' />
+                            <h3>{selectedDish.tiffinName}</h3>
+                            <span className={selectedDish.availabilityStatus === 'In Stock' ? "text-success fw-bold" : 'fw-bold text-danger'}>{selectedDish.availabilityStatus}</span>
+                            <Quentity quantity={quantity} setQuantity={setQuantity} />
+                            <button disabled={selectedDish.availabilityStatus === "Out of Stock"} onClick={addToCart} className="add-to-cart">Add to Cart</button>
                         </div>
                         <div className="modal-right">
+
                             <h4>Description:</h4>
                             <p>{selectedDish.description}</p>
-                            <img src={assets.rating_stars} alt='' />
+                            {/* <img src={assets.rating_stars} alt='' /> */}
                             <h4>Price: {selectedDish.price}</h4>
                             <button className="modal-subscribe" onClick={handleSubscribe}>Subscribe</button>
                         </div>

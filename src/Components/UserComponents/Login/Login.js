@@ -62,6 +62,7 @@ const Login = ({ setShowLogin, token }) => {
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('username', `${data.data.firstName} ${data.data.lastName}`);
                 localStorage.setItem('email', data.data.email);
+                localStorage.setItem('userId', data.data.id);
                 navigate('/menu');
                 ApiResponseMessage(data.message, SUCCESS);  
                 // setCurrState("Login");

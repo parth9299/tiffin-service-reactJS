@@ -154,4 +154,7 @@ body {
       padding: 10px;
     }
   }
-  
+  .cart th {
+    color: white;
+    background-color: #E0C87C;
+}
