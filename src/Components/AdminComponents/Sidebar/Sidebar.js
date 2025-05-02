@@ -12,7 +12,8 @@ const Sidebar = () => {
   };
   const sidebarItems = [
     { path: '/admin/dashboard', label: 'Dashboard', icon: '🏠' },
-    { path: '/admin/user', label: 'Admin User', icon: '🛍️' },
+    { path: '/admin/user', label: 'User', icon: '🛍️' },
+    { path: '/admin/admin-user', label: 'Admin User', icon: '🛍️' },
     { path: '/admin/tiffin', label: 'Tiffin', icon: '🛍️' },
     { path: '/admin/orders', label: 'Order', icon: '🛍️' },
     { path: '/admin/feedback', label: 'Feedback', icon: '💬' },

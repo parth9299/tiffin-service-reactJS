@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Header.css'; // Import the CSS file
 import { assets } from '../../../Assets/Images/assets';
 import { Link } from 'react-router-dom'
+import ServiceAvailability from './location';
 
 function Header({ setShowLogin }) {
   const [menu, setMenu] = useState("Home");
@@ -36,6 +37,7 @@ function Header({ setShowLogin }) {
           <img src={assets.profile_icon} alt='Profile' className='icon' />
           <Link to='/cart'><img src={assets.basket_icon} alt='cart' className='icon' /></Link>
         </div>}
+        <ServiceAvailability/>
         {!name && <button onClick={() => setShowLogin(true)}>Sign In</button>}
       </div>
     </header>

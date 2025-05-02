@@ -33,6 +33,8 @@ import Dinner from './Components/Pages/UserPages/Dinner/Dinner';
 import AdminUsers from './Components/Pages/AdminPages/AdminUsers/AdminUsers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TiffinService from './Components/Pages/AdminPages/Tiffin/TiffinService';
+import Users from './Components/Pages/AdminPages/AdminUsers/AdminUsers';
+import User from './Components/Pages/AdminPages/Users/Users';
 function App({ setShowLogin }) {
 
   return (
@@ -65,7 +67,8 @@ function App({ setShowLogin }) {
         <Route path='/admin/dashboard' element={<Dashboard />} />
         <Route path='/admin/feedback' element={<Feedback />} />
         <Route path='/admin/orders' element={<Orders />} />
-        <Route path='/admin/user' element={<AdminUsers />} />
+        <Route path='/admin/user' element={<User />} />
+        <Route path='/admin/admin-user' element={<AdminUsers />} />
         <Route path='/admin/tiffin' element={<TiffinService />} />
         <Route path='/admin/submanagement' element={<SubManagement />} />
       </Route>

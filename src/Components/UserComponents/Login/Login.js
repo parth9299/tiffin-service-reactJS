@@ -9,7 +9,7 @@ import { ApiResponseMessage } from '../../Common/ApiResponse';
 import { DANGER, SUCCESS } from '../../../Helper/constent';
 
 const Login = ({ setShowLogin, token }) => {
-    const [currState, setCurrState] = useState(token ? "Set Password" : 'Sign Up');
+    const [currState, setCurrState] = useState(token ? "Set Password" : 'Login');
     const [formData, setFormData] = useState({
         name: '',
         address: '',

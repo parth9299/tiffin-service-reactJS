@@ -11,7 +11,7 @@ import { DANGER, SUCCESS } from "../../../../Helper/constent";
 import { DeleteSvg, EditSvg } from "../../../../Helper/iconHelper";
 import CommonPagination from "../../../Common/Pagination";
 
-const AdminUsers = () => {
+const User = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ id: "", username: "", email: "" });
   const [editUser, setEditUser] = useState(null);
@@ -37,7 +37,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const { success, data } = await apiRequest(BASE_URL + '/adminList', "POST", dispatchData);
+      const { success, data } = await apiRequest(BASE_URL + '/userList', "POST", dispatchData);
       if (!success) throw new Error("Failed to fetch users.");
       setUsers(data.data.list);
       setTotalRecords(data.data.totalRecords)
@@ -75,9 +75,15 @@ const AdminUsers = () => {
 
   const columns = [
     {
-      title: 'Username',
-      dataIndex: 'username',
-      key: 'username',
+      title: 'First Name',
+      dataIndex: 'firstName',
+      key: 'firstName',
+      width: 150,
+    },
+    {
+      title: 'Last Name',
+      dataIndex: 'lastName',
+      key: 'lastName',
       width: 150,
     },
     {
@@ -85,40 +91,25 @@ const AdminUsers = () => {
       dataIndex: 'email',
       key: 'email',
       width: 200,
-    }, {
-      title: 'Phone Number',
-      dataIndex: 'phoneNumber',
-      key: 'phoneNumber',
-      width: 200,
-    }, {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-      width: 200,
-      render: (user) => (<>
-        {user.rolename}
-      </>)
     },
     {
-      title: 'Actions',
-      key: 'actions',
-      width: 150,
-      render: (data) => (
-        <>
-          <button className="admin-edit-btn" onClick={() => handleEdit(data)}>
-            <EditSvg />
-          </button>
-          <button className="admin-delete-btn" onClick={() => handleDelete(data.id)}>
-            <DeleteSvg />
-          </button>
-        </>
-      ),
+      title: 'Phone Number',
+      dataIndex: 'phone_number',
+      key: 'phone_number',
+      width: 180,
     },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      key: 'address',
+      width: 250,
+    },
+ 
   ];
-
+  
   return (
     <div className="admin-table-container">
-      <Breadcrumb title={'Admin Users'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add User</Button>} />
+      <Breadcrumb title={'Users'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add User</Button>} />
       <DataView
         columns={columns}
         data={users?.length > 0 ? users : []}
@@ -143,4 +134,4 @@ const AdminUsers = () => {
   );
 };
 
-export default AdminUsers;
+export default User;
