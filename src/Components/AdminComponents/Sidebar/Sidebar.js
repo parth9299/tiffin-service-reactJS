@@ -16,11 +16,11 @@ const Sidebar = () => {
     { path: '/admin/admin-user', label: 'Admin User', icon: '🛍️' },
     { path: '/admin/tiffin', label: 'Tiffin', icon: '🛍️' },
     { path: '/admin/orders', label: 'Order', icon: '🛍️' },
-    { path: '/admin/feedback', label: 'Feedback', icon: '💬' },
-    { path: '/admin/submanagement', label: 'Subscription Management', icon: '📈' },
-    { path: '/admin/subdetails', label: 'Subscription Details', icon: '📊' },
+    // { path: '/admin/feedback', label: 'Feedback', icon: '💬' },
+    // { path: '/admin/submanagement', label: 'Subscription Management', icon: '📈' },
+    // { path: '/admin/subdetails', label: 'Subscription Details', icon: '📊' },
     { path: '/admin/paymentdetails', label: 'Payment Details', icon: '💸' },
-    { path: '/admin/reportanalysis', label: 'Report and Analysis', icon: '🎯' },
+    // { path: '/admin/reportanalysis', label: 'Report and Analysis', icon: '🎯' },
   ];
 
   return (

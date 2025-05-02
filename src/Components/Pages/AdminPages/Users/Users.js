@@ -109,7 +109,7 @@ const User = () => {
   
   return (
     <div className="admin-table-container">
-      <Breadcrumb title={'Users'} button={<Button className="admin-add-user-btn" color="primary" onClick={() => setShowPopup(true)}>+ Add User</Button>} />
+      <Breadcrumb title={'Users'}/>
       <DataView
         columns={columns}
         data={users?.length > 0 ? users : []}
